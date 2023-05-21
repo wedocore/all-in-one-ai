@@ -15,7 +15,9 @@ defined( 'ABSPATH' ) or die( 'No script kiddies please!' );
 
 define( 'WPAI_PATH', dirname( __FILE__ ) );
 
-require_once( WPAI_PATH . '/vendor/autoload.php' );
+require( WPAI_PATH . '/vendor/autoload.php' );
+
+use Orhanerday\OpenAi\OpenAi;
 
 // Register the menu.
 add_action( 'admin_menu', 'wpai_plugin_menu_func' );
@@ -56,16 +58,6 @@ function wpai_plugin_options() {
          </div>
       </form>
    <?php
-
-   // $yourApiKey = get_option('API_KEY');
-   // $client = OpenAI::client($yourApiKey);
-
-   // $result = $client->completions()->create([
-   //    'model' => 'text-davinci-003',
-   //    'prompt' => 'PHP is',
-   // ]);
-
-   // echo $result['choices'][0]['text'];
 }
 
 add_action( 'admin_post_update_wpai_settings', 'wpai_handle_save' );
