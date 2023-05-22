@@ -1,5 +1,5 @@
-=== WordPress Plugin - WP AI ===
-Tags: AI, ChatGPT, AI for WordPress
+=== OpenAI: WPAI ===
+Tags: ai, openai, chatgpt, generate content, genere meta description
 Requires at least: 4.5.0
 Tested up to: 6.1
 Stable tag: 4.4.1
