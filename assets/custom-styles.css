@@ -1,0 +1,14 @@
+.meta-description-meta-box {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+.meta-description-meta-box label {
+    margin-bottom: 10px;
+}
+
+.meta-description-meta-box textarea {
+    width: 100%;
+    margin-bottom: 10px;
+}
