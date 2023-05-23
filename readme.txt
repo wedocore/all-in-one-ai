@@ -1,10 +1,10 @@
-=== OpenAI: WPAI ===
+=== All-in-One AI ===
 Tags: ai, openai, chatgpt, generate content, genere meta description
 Requires at least: 4.5.0
 Tested up to: 6.1
 Stable tag: 4.4.1
 Requires PHP: 7.4
-License: GNU General Public License v2.0 or later
+License: GNU General Public License v3.0 or later
 
 WPAI is a powerful WordPress plugin that utilizes artificial intelligence to enhance the functionality and performance of your website. This plugin integrates seamlessly with your WordPress installation and provides intelligent features to optimize user experience and streamline website management.
 

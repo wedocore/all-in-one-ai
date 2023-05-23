@@ -1,14 +1,14 @@
 <?php
 /*
-Plugin Name: OpenAI: WPAI
+Plugin Name: All-in-One AI
 Plugin URI: https://github.com/andbalashov/wpai
 Description: WordPress AI (WPAI) is a powerful WordPress plugin that integrates artificial intelligence capabilities into your WordPress website.
 Version: 1.0
 Author: Andrii Balashov
 Author URI: https://github.com/andbalashov
-License: GPLv2 or later
+License: GPLv3 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
-Text Domain: openai-wpai
+Text Domain: all-in-one-ai
 */
 
 defined('ABSPATH') or die('No script kiddies please!');
