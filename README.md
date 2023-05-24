@@ -1,6 +1,6 @@
 # All-in-One AI WordPress Plugin
 
-The All-in-One AI WordPress Plugin (WP-AI) is a powerful tool that integrates artificial intelligence capabilities into your WordPress website. This plugin provides a wide range of AI features and functionalities to enhance your website's performance, user experience, and efficiency.
+The All-in-One AI WordPress Plugin is a powerful tool that integrates artificial intelligence capabilities into your WordPress website. This plugin provides a wide range of AI features and functionalities to enhance your website's performance, user experience, and efficiency.
 
 ## Features
 
