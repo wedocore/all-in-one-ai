@@ -4,7 +4,7 @@
 use Orhanerday\OpenAi\OpenAi;
 
 // Function to generate content for a WordPress post using ChatGPT
-function generate_post_content($title)
+function aioai_generate_post_content($title)
 {
     // Set up OpenAI API credentials
     $open_ai_key = get_option('API_KEY');
@@ -32,18 +32,18 @@ function generate_post_content($title)
 }
 
 // Hook into the 'wp_insert_post_data' action to automatically generate content for a new post
-function auto_generate_post_content($data, $postarr)
+function aioai_auto_generate_post_content($data, $postarr)
 {
     if (isset($_POST['generate_content'])) {
         $title = !empty($postarr['post_title']) ? $postarr['post_title'] : 'topic';
-        $data['post_content'] = generate_post_content($title);
+        $data['post_content'] = aioai_generate_post_content($title);
     }
     return $data;
 }
-add_filter('wp_insert_post_data', 'auto_generate_post_content', 10, 2);
+add_filter('wp_insert_post_data', 'aioai_auto_generate_post_content', 10, 2);
 
 // Generate meta description content using OpenAI
-function generate_meta_description_content($title, $content)
+function aioai_generate_meta_description_content($title, $content)
 {
     // Set up OpenAI API credentials
     $open_ai_key = get_option('API_KEY');
@@ -71,14 +71,14 @@ function generate_meta_description_content($title, $content)
 }
 
 // Handle generation and update of meta description
-function generate_meta_description($post_id)
+function aioai_generate_meta_description($post_id)
 {
     if (isset($_POST['generate_meta_description'])) {
         $title = get_the_title($post_id);
         $content = get_post_field('post_content', $post_id);
 
         // Generate meta description content using OpenAI
-        $meta_description = generate_meta_description_content($title, $content);
+        $meta_description = aioai_generate_meta_description_content($title, $content);
 
         // Update meta description
         update_post_meta($post_id, 'meta_description', $meta_description);
@@ -87,4 +87,4 @@ function generate_meta_description($post_id)
         update_post_meta($post_id, '_yoast_wpseo_metadesc', $meta_description);
     }
 }
-add_action('save_post', 'generate_meta_description');
+add_action('save_post', 'aioai_generate_meta_description');
