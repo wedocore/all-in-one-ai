@@ -94,7 +94,3 @@ The plugin's development team will review your submission and work with you to i
 ## License
 
 The All-in-One AI WordPress Plugin is released under the GPL-3.0 License. This means that you are free to use, modify, and distribute this plugin in accordance with the terms of the GPL-3.0 license.
-
-## Credits
-
-The All-in-One AI WordPress Plugin is developed and maintained by [Andrii Balashov](https://github.com/andbalashov). We would like to express our gratitude to the open-source community for their valuable contributions and support in making this project possible.
