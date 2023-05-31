@@ -21,13 +21,15 @@ function aioai_plugin_options() {
         wp_die( __( 'You do not have sufficient permissions to access this page.' ) );
     }
 
+    $status = isset($_GET['status']) ? sanitize_text_field($_GET['status']) : '';
+    if ($status === 'error') {
+        aioai_display_error_message();
+    }
+
     $api_key = get_option( 'API_KEY', '' );
     ?>
     <div class="wrap">
         <h1><?php echo esc_html( get_admin_page_title() ); ?></h1>
-
-        <?php settings_errors(); ?>
-
         <form method="post" action="<?php echo esc_url( admin_url( 'admin-post.php' ) ); ?>">
             <input type="hidden" name="action" value="update_aioai_settings" />
             <?php wp_nonce_field( 'update_aioai_settings', 'aioai_settings_nonce' ); ?>
@@ -53,31 +55,48 @@ function aioai_plugin_options() {
 }
 
 // Handle saving of plugin options
-add_action( 'admin_post_update_aioai_settings', 'aioai_handle_save' );
-function aioai_handle_save() {
-    if ( ! isset( $_POST['aioai_settings_nonce'] ) || ! wp_verify_nonce( $_POST['aioai_settings_nonce'], 'update_aioai_settings' ) ) {
-        wp_die( __( 'Invalid nonce specified.', 'aioai' ) );
+add_action('admin_post_update_aioai_settings', 'aioai_handle_save');
+function aioai_handle_save()
+{
+    if (!isset($_POST['aioai_settings_nonce']) || !wp_verify_nonce($_POST['aioai_settings_nonce'], 'update_aioai_settings')) {
+        wp_die(__('Invalid nonce specified.'));
     }
 
-    if ( ! current_user_can( 'manage_options' ) ) {
-        wp_die( __( 'You do not have sufficient permissions to access this page.' ) );
+    if (!current_user_can('manage_options')) {
+        wp_die(__('You do not have sufficient permissions to access this page.'));
     }
 
-    if ( isset( $_POST['API_KEY'] ) ) {
-        $api_key = sanitize_text_field( $_POST['API_KEY'] );
+    if (isset($_POST['API_KEY'])) {
+        $api_key = sanitize_text_field($_POST['API_KEY']);
 
-        update_option( 'API_KEY', $api_key );
+        if (!empty($api_key)) {
+            update_option('API_KEY', $api_key);
 
-        $redirect_url = add_query_arg( 'status', 'success', admin_url( 'options-general.php?page=all-in-one-ai' ) );
-        wp_safe_redirect( $redirect_url );
-        exit;
-    } else {
-        // Handle empty or invalid input
-        add_settings_error( 'aioai_settings', 'empty_api_key', __( 'Error: Incorrect field value. Please correct it.', 'aioai' ), 'error' );
-        $redirect_url = add_query_arg( 'status', 'error', admin_url( 'options-general.php?page=all-in-one-ai' ) );
-        wp_safe_redirect( $redirect_url );
-        exit;
+            $redirect_url = add_query_arg('status', 'success', admin_url('options-general.php?page=all-in-one-ai'));
+            wp_safe_redirect($redirect_url);
+            exit;
+        } else {
+            // Handle empty input
+            $error_message = __('Error: The field value cannot be empty.', 'aioai');
+            add_action('admin_notices', 'aioai_display_error_message');
+        }
     }
+
+    // If the code reaches here, it means there was an error
+    $redirect_url = add_query_arg('status', 'error', admin_url('options-general.php?page=all-in-one-ai'));
+    wp_safe_redirect($redirect_url);
+    exit;
+}
+
+// Display error message
+function aioai_display_error_message()
+{
+    $error_message = __('Error: The field value cannot be empty.', 'aioai');
+    ?>
+    <div class="notice notice-error is-dismissible">
+        <p><?php echo esc_html($error_message); ?></p>
+    </div>
+    <?php
 }
 
 // Add a custom button to generate content on the post editing page
