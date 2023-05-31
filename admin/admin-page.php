@@ -105,7 +105,7 @@ function aioai_add_generate_content_button()
     global $post;
     $post_type = get_post_type($post);
 
-    if ($post_type === 'post') { // Customize this condition based on your post type
+    if ($post_type === 'post' && current_user_can('edit_post', $post->ID)) { // Customize this condition based on your post type
         ?>
         <div class="misc-pub-section">
             <button type="submit" class="button button-primary" name="generate_content">Generate Content</button>
@@ -131,25 +131,35 @@ function aioai_add_meta_description_meta_box()
         );
     }
 }
-add_action('add_meta_boxes', 'aioai_add_meta_description_meta_box');
 
 // Render meta box content
 function aioai_render_meta_description_meta_box($post)
 {
+    if (!current_user_can('edit_post', $post->ID)) {
+        return;
+    }
+
+    wp_nonce_field('aioai_generate_meta_description', 'aioai_generate_meta_description_nonce');
     $meta_description = get_post_meta($post->ID, 'meta_description', true);
     ?>
     <div class="meta-description-meta-box">
         <label for="meta_description">Meta Description:</label>
         <textarea id="meta_description" name="meta_description" rows="4"><?php echo esc_textarea($meta_description); ?></textarea>
+        <?php wp_nonce_field('aioai_generate_meta_description', 'aioai_generate_meta_description_nonce'); ?>
         <button type="submit" class="button button-primary" name="generate_meta_description">Generate Meta Description</button>
     </div>
     <?php
 }
+add_action('add_meta_boxes', 'aioai_add_meta_description_meta_box');
 
 // Save meta description
 function aioai_save_meta_description($post_id)
 {
-    if (isset($_POST['meta_description'])) {
+    if (!isset($_POST['aioai_generate_meta_description_nonce']) || !wp_verify_nonce($_POST['aioai_generate_meta_description_nonce'], 'aioai_generate_meta_description')) {
+        return;
+    }
+
+    if (isset($_POST['meta_description']) && current_user_can('edit_post', $post_id)) {
         $meta_description = sanitize_textarea_field($_POST['meta_description']);
         update_post_meta($post_id, 'meta_description', $meta_description);
     }
