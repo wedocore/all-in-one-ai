@@ -34,7 +34,7 @@ function aioai_generate_post_content($title)
 // Hook into the 'wp_insert_post_data' action to automatically generate content for a new post
 function aioai_auto_generate_post_content($data, $postarr)
 {
-    if (isset($_POST['generate_content'])) {
+    if (isset($_POST['generate_content']) && wp_verify_nonce($_POST['generate_content_nonce'], 'generate_content_action')) {
         $title = !empty($postarr['post_title']) ? $postarr['post_title'] : 'topic';
         $data['post_content'] = aioai_generate_post_content($title);
     }
@@ -73,7 +73,7 @@ function aioai_generate_meta_description_content($title, $content)
 // Handle generation and update of meta description
 function aioai_generate_meta_description($post_id)
 {
-    if (isset($_POST['generate_meta_description'])) {
+    if (isset($_POST['generate_meta_description']) && wp_verify_nonce($_POST['generate_content_nonce'], 'generate_content_action')) {
         $title = get_the_title($post_id);
         $content = get_post_field('post_content', $post_id);
 
