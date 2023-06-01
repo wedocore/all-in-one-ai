@@ -1,6 +1,6 @@
 === All-in-One AI ===
-Contributors: andbalashov
-Tags: ai, openai, chatgpt, generate content, genere meta description
+Contributors: aioai, andbalashov
+Tags: ai, openai, chatgpt, gpt, chatbot
 Requires at least: 5.0
 Tested up to: 6.2.2
 Requires PHP: 7.0
