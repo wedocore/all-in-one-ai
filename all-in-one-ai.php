@@ -1,11 +1,11 @@
 <?php
 /*
 Plugin Name: All-in-One AI
-Plugin URI: https://github.com/andbalashov/wpai
+Plugin URI: https://wordpress.org/plugins/all-in-one-ai/
 Description: All-in-One AI is a powerful WordPress plugin that integrates artificial intelligence capabilities into your WordPress website.
 Version: 1.0
-Author: Andrii Balashov
-Author URI: https://github.com/andbalashov
+Author: All-in-One AI Team
+Author URI: https://github.com/all-in-one-ai
 License: GPLv3 or later
 License URI: https://www.gnu.org/licenses/gpl-3.0.html
 Text Domain: all-in-one-ai
