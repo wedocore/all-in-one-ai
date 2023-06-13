@@ -26,7 +26,7 @@ The All-in-One AI WordPress Plugin offers the following features:
 
 To install the All-in-One AI WordPress Plugin, follow these steps:
 
-1. Download the plugin from the official repository: [https://github.com/andbalashov/all-in-one-ai](https://github.com/andbalashov/all-in-one-ai)
+1. Download the plugin from the official repository: [https://github.com/all-in-one-ai/all-in-one-ai](https://github.com/all-in-one-ai/all-in-one-ai)
 
 2. Extract the downloaded ZIP file to your local machine.
 
@@ -72,8 +72,8 @@ If you encounter any issues or have questions regarding the All-in-One AI WordPr
 
  you can seek support through the following channels:
 
-- Official GitHub Repository: [https://github.com/andbalashov/all-in-one-ai](https://github.com/andbalashov/all-in-one-ai)
-- Developer Email: [andbalashov@hotmail.com](mailto:andbalashov@hotmail.com)
+- Official GitHub Repository: [https://github.com/all-in-one-ai/all-in-one-ai](https://github.com/all-in-one-ai/all-in-one-ai)
+- Developer Email: [aioai.wordpress@gmail.com](mailto:aioai.wordpress@gmail.com)
 
 Please ensure that you provide detailed information about the problem you are facing, including any error messages and steps to reproduce the issue. The plugin developers will strive to assist you as quickly as possible.
 
