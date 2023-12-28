@@ -1,8 +1,8 @@
 === All-in-One AI ===
-Contributors: aioai, andbalashov
+Contributors: wedocore, andbalashov
 Tags: ai, openai, chatgpt, gpt, chatbot
 Requires at least: 5.0
-Tested up to: 6.2.2
+Tested up to: 6.4
 Requires PHP: 7.0
 Stable tag: 1.0
 License: GPL-3.0
